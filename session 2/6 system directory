@@ -1,0 +1,13 @@
+#include <iostream>
+#include<direct.h>
+//#include<filesystem>
+#include<fstream>
+using namespace std;
+
+int main() {
+   string path="C:\\Users\\user\\hashira";
+   _mkdir(path.c_str());
+string foldername = "test";
+    _mkdir(("C:\\Users\\user\\"+foldername).c_str());
+
+   

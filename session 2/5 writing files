@@ -1,0 +1,39 @@
+#include <iostream>
+ #include<fstream>
+using namespace std;
+
+int main() {
+ ofstream fw;
+    fw.open("myfile.txt");
+
+    if(fw.is_open()){
+        cout<<"file opened"<<endl;
+    } else{
+        cout<<"not opened"<<endl;
+        return 0;
+    }
+//cout<<
+    int x=10;
+    fw << x << endl;
+    fw << 939.328 << endl;
+    fw << "Hashira club" << endl;
+    // put
+   fw.put('F');
+   fw.put('C');
+   fw.put('A');
+   fw.put('I');
+   fw.put('\n');
+    fw.close();
+// from one
+      ifstream fww("myfile.txt");
+     ofstream fr_getline;
+    fr_getline.open("myfile2.txt");
+    string full_Line;
+    while(getline(fww, full_Line)){
+
+        fr_getline<<full_Line<<endl;
+}
+    fr_getline.close();
+
+    fw.close();
+}

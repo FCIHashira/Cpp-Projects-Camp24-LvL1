@@ -1,0 +1,53 @@
+#include <iostream>
+#include<fstream>
+using namespace std;
+
+int main() {
+//    ofstream, ifstream, fstream
+
+//********READ CHAR BY CHAR 
+    ifstream fr;
+    fr.open("myfile.txt");
+    char ch;
+    while(cin>>ch){
+            cout<<ch;
+        }
+    cout<<endl;
+    fr.close();
+
+    cout<<"#################"<<endl;
+//*****************************************
+    ifstream fr2;
+    fr2.open("myfile.txt");
+    char ch2;
+    while(cin.get(ch2)){
+        
+        cout<<ch2;
+    }
+    cout<<endl;
+    fr2.close();
+
+    cout<<"#################"<<endl;
+//****************************************************************************
+//*******************READ LINE BY LINE
+    ifstream frline;
+    frline.open("myfile.txt");
+    string str;
+    while(frline>>str){
+        cout<<str<<endl;
+    }
+    frline.close();
+
+    cout<<"#################"<<endl;
+//**************************************
+    ifstream fr_getline;
+    fr_getline.open("myfile.txt");
+    string full_Line;
+    while(getline(fr_getline, full_Line,'-')){
+        cout<<full_Line;//<<endl;
+    }
+    fr_getline.close();
+//*******************************************************************************
+
+    return 0;
+}
