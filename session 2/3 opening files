@@ -1,0 +1,46 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+int main() {
+   ifstream (read)
+   ofstream (write)
+   fstream  (read ,write, app)
+   ****READ{
+    way 1{
+   ifstream fileRead("r.txt");
+         or
+   ifstream fileRead;
+   fileRead.open("r.txt");
+   }
+    way 2{
+    fstream fileRead("r.txt",ios::in);
+        or
+    fstream fileRead;
+    fileRead.open("r.txt",ios::in);
+   }
+   }
+***********************************************************************
+   ***** write{
+     way 1{
+   ofstream fileWrite("w.txt");
+         or
+   ofstream fileWrite;
+   fileWrite.open("w.txt");
+   }
+    way 2{
+    fstream fileWrite("w.txt",ios::out);
+        or
+    fstream fileWrite;
+    fileWrite.open("w.txt",ios::out);
+   }
+   }
+*************************************************************************
+***both
+fstream file("b.txt",ios::in|ios::out); 
+or
+fstream file;
+file.open("b.txt",ios::ate);//app trune
+
+
+    return 0;
+}

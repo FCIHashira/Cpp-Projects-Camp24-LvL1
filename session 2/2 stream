@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int main() {
+    stdin stdout stderr
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    int n=5;
+    while(n--){
+        int num; cin>>num;
+        cout<<num<<endl;
+    }
+    return 0;
+}
