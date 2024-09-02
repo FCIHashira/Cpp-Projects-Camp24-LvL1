@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+
+int main() {
+    fstream bf;
+    bf.open("data.dat",ios::out|ios::binary);
+    int num = 123456;
+    char ch = 'A';
+    if(bf.is_open()) {
+        bf.write(&ch,sizeof(ch));
+        bf.close();
+    }
+    else
+        cout << "ERROR!";
+
+
+    bf.open("data.dat",ios::in|ios::binary);
+    int readnum;
+    char readch;
+    if(bf.is_open()) {
+        bf.read(&readch,sizeof(readch));
+        bf.close();
+    }
+    else
+        cout << "ERROR!";
+
+    cout << readch;
+    return 0;
+}
