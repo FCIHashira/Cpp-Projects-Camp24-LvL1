@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+
+int main() {
+    // what the difference between binary file and text file
+
+     fstream bf;
+    bf.open("data.dat",ios::out|ios::binary);
+    int num = 123456;
+    if(bf.is_open()) {
+        bf.write(reinterpret_cast<char*>(&num),sizeof(num));
+        bf.close();
+    }
+    else
+        cout << "ERROR!";
+    
+    fstream f;
+    f.open("data.txt",ios::out);
+    if(f.is_open()) {
+        f << num ;
+        f.close();
+    }
+    else
+        cout << "ERROR!";
+    return 0;
+}
