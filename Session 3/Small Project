@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+
+
+struct studentinfo {
+    string name;
+    int age;
+    float gpa;
+};
+vector<studentinfo>records={
+    {"omar",18,2.91},
+    {"ahmed",19,3.91},
+    {"ibrahem",18,3.42}
+};
+
+
+int main() {
+    fstream bf;
+    bf.open("data.dat",ios::out|ios::binary);
+    size_t recordCount = records.size();
+    bf.write(reinterpret_cast<char*>(&recordCount),sizeof(recordCount));
+    if(bf.is_open()) {
+        for(auto& Rrecord : records) {
+            size_t namelenght = Rrecord.name.size();
+            bf.write(reinterpret_cast<char*>(&namelenght),sizeof(namelenght));
+            bf.write(Rrecord.name.c_str(),namelenght);
+            bf.write(reinterpret_cast<char*>(&Rrecord.age),sizeof(Rrecord.age));
+            bf.write(reinterpret_cast<char*>(&Rrecord.gpa),sizeof(Rrecord.gpa));
+        }
+        bf.close();
+    }
+    else
+        cout << "ERROR!";
+    
+    bf.open("data.dat",ios::in|ios::binary);
+    vector<studentinfo>readRecord(recordCount);
+    bf.read(reinterpret_cast<char*>(&recordCount),sizeof(recordCount));
+    if(bf.is_open()) {
+        for(auto& Rrecord : readRecord) {
+            size_t namelenght;
+            bf.read(reinterpret_cast<char*>(&namelenght),sizeof(namelenght));
+            Rrecord.name.resize(namelenght);
+            bf.read(&Rrecord.name[0],namelenght);
+            bf.read(reinterpret_cast<char*>(&Rrecord.age),sizeof(Rrecord.age));
+            bf.read(reinterpret_cast<char*>(&Rrecord.gpa),sizeof(Rrecord.gpa));
+        }
+        bf.close();
+    }
+    else
+        cout << "ERROR!";
+    
+    for (auto& Record : readRecord) {
+        cout << "Name: " << Record.name << ", age: " << Record.age << ", GPA: " << Record.gpa << endl;
+    }
+
+    return 0;
+}

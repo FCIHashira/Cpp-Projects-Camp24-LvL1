@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+
+int main() {
+    fstream bf;
+    bf.open("data.dat",ios::out|ios::binary);
+    
+    string name = "omar ahmed";
+    size_t len = name.size();
+    if(bf.is_open()) {
+        bf.write(reinterpret_cast<char*>(&len),sizeof(len));
+        bf.write(name.c_str(),len);
+        bf.close();
+    }
+    else
+        cout << "ERROR!";
+    
+    bf.open("data.dat",ios::in|ios::binary);
+    
+    string readname;
+    size_t readlen;
+    if(bf.is_open()) {
+        bf.read(reinterpret_cast<char*>(&readlen),sizeof(readlen));
+        readname.resize(readlen);
+        bf.read(&readname[0],readlen);
+        bf.close();
+    }
+    else
+        cout << "ERROR!";
+    
+    cout << readname;
+
+    return 0;
+}

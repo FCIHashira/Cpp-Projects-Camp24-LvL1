@@ -1,0 +1,217 @@
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+
+
+struct studentinfo {
+    string name;
+    int age;
+    float gpa;
+};
+vector<studentinfo>records={
+    {"omar",18,2.91},
+    {"ahmed",19,3.91},
+    {"ibrahem",18,3.42}
+};
+
+
+
+
+
+
+
+int main() {
+
+
+    fstream csvFile;
+    csvFile.open("c.csv",ios::out);
+    if(csvFile.is_open()) {
+        for(auto& it:records) {
+            csvFile << it.name << ';' << it.age << ';' << it.gpa << endl ;
+        }
+        csvFile.close();
+    }
+    else
+        cout << "ERROR!";
+
+
+    csvFile.open("c.csv",ios::in);
+    while (csvFile) {
+        string ln;
+        getline(csvFile,ln);
+        //cout << ln << endl;
+        string token;
+        stringstream newln(ln);
+        while (getline(newln,token,';')) {
+            cout << token << ' ';
+        }
+        cout << endl;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // what the difference between binary file and text file
+
+    //  fstream bf;
+    // bf.open("data.dat",ios::out|ios::binary);
+    // int num = 123456;
+    // if(bf.is_open()) {
+    //     bf.write(reinterpret_cast<char*>(&num),sizeof(num));
+    //     bf.close();
+    // }
+    // else
+    //     cout << "ERROR!";
+    //
+    // fstream f;
+    // f.open("data.txt",ios::out);
+    // if(f.is_open()) {
+    //     f << num ;
+    //     f.close();
+    // }
+    // else
+    //     cout << "ERROR!";
+
+
+
+       // write and read int
+
+    // bf.open("data.dat",ios::out|ios::binary);
+    // int num = 123456;
+    // char ch = 'A';
+    // if(bf.is_open()) {
+    //     bf.write(&ch,sizeof(ch));
+    //     bf.close();
+    // }
+    // else
+    //     cout << "ERROR!";
+    //
+    //
+    // bf.open("data.dat",ios::in|ios::binary);
+    // int readnum;
+    // char readch;
+    // if(bf.is_open()) {
+    //     bf.read(&readch,sizeof(readch));
+    //     bf.close();
+    // }
+    // else
+    //     cout << "ERROR!";
+    //
+    // cout << readch;
+
+
+
+
+       //write and read string
+    // bf.open("data.dat",ios::out|ios::binary);
+    //
+    // string name = "omar ahmed";
+    // size_t len = name.size();
+    // if(bf.is_open()) {
+    //     bf.write(reinterpret_cast<char*>(&len),sizeof(len));
+    //     bf.write(name.c_str(),len);
+    //     bf.close();
+    // }
+    // else
+    //     cout << "ERROR!";
+    //
+    // bf.open("data.dat",ios::in|ios::binary);
+    //
+    // string readname;
+    // size_t readlen;
+    // if(bf.is_open()) {
+    //     bf.read(reinterpret_cast<char*>(&readlen),sizeof(readlen));
+    //     readname.resize(readlen);
+    //     bf.read(&readname[0],readlen);
+    //     bf.close();
+    // }
+    // else
+    //     cout << "ERROR!";
+    //
+    // cout << readname;
+
+
+
+    // CSV Files
+    // fstream csvFile;
+    // csvFile.open("c.csv",ios::out);
+    // if(csvFile.is_open()) {
+    //     for(auto& it:records) {
+    //         csvFile << it.name << ';' << it.age << ';' << it.gpa << endl ;
+    //     }
+    //     csvFile.close();
+    // }
+    // else
+    //     cout << "ERROR!";
+    //
+    //
+    // csvFile.open("c.csv",ios::in);
+    // while (csvFile) {
+    //     string ln;
+    //     getline(csvFile,ln);
+    //     //cout << ln << endl;
+    //     string token;
+    //     stringstream newln(ln);
+    //     while (getline(newln,token,';')) {
+    //         cout << token << ' ';
+    //     }
+    //     cout << endl;
+    // }
+    
+
+
+
+    // Small Project
+    
+    // fstream bf;
+    // bf.open("data.dat",ios::out|ios::binary);
+    // size_t recordCount = records.size();
+    // bf.write(reinterpret_cast<char*>(&recordCount),sizeof(recordCount));
+    // if(bf.is_open()) {
+    //     for(auto& Rrecord : records) {
+    //         size_t namelenght = Rrecord.name.size();
+    //         bf.write(reinterpret_cast<char*>(&namelenght),sizeof(namelenght));
+    //         bf.write(Rrecord.name.c_str(),namelenght);
+    //         bf.write(reinterpret_cast<char*>(&Rrecord.age),sizeof(Rrecord.age));
+    //         bf.write(reinterpret_cast<char*>(&Rrecord.gpa),sizeof(Rrecord.gpa));
+    //     }
+    //     bf.close();
+    // }
+    // else
+    //     cout << "ERROR!";
+    //
+    // bf.open("data.dat",ios::in|ios::binary);
+    // vector<studentinfo>readRecord(recordCount);
+    // bf.read(reinterpret_cast<char*>(&recordCount),sizeof(recordCount));
+    // if(bf.is_open()) {
+    //     for(auto& Rrecord : readRecord) {
+    //         size_t namelenght;
+    //         bf.read(reinterpret_cast<char*>(&namelenght),sizeof(namelenght));
+    //         Rrecord.name.resize(namelenght);
+    //         bf.read(&Rrecord.name[0],namelenght);
+    //         bf.read(reinterpret_cast<char*>(&Rrecord.age),sizeof(Rrecord.age));
+    //         bf.read(reinterpret_cast<char*>(&Rrecord.gpa),sizeof(Rrecord.gpa));
+    //     }
+    //     bf.close();
+    // }
+    // else
+    //     cout << "ERROR!";
+    //
+    // for (auto& Record : readRecord) {
+    //     cout << "Name: " << Record.name << ", age: " << Record.age << ", GPA: " << Record.gpa << endl;
+    // }
+
+
+
+    return 0;
+}
+

@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+
+
+struct studentinfo {
+    string name;
+    int age;
+    float gpa;
+};
+vector<studentinfo>records={
+    {"omar",18,2.91},
+    {"ahmed",19,3.91},
+    {"ibrahem",18,3.42}
+};
+
+
+int main() {
+    fstream csvFile;
+    csvFile.open("c.csv",ios::out);
+    if(csvFile.is_open()) {
+        for(auto& it:records) {
+            csvFile << it.name << ';' << it.age << ';' << it.gpa << endl ;
+        }
+        csvFile.close();
+    }
+    else
+        cout << "ERROR!";
+    
+    
+    csvFile.open("c.csv",ios::in);
+    while (csvFile) {
+        string ln;
+        getline(csvFile,ln);
+        //cout << ln << endl;
+        string token;
+        stringstream newln(ln);
+        while (getline(newln,token,';')) {
+            cout << token << ' ';
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
