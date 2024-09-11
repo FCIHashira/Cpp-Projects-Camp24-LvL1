@@ -25,7 +25,7 @@ You are required to do this task using *Caesar Cipher*, but if you would like to
 - [ ] Do the encrypt or decrypt operations.
 - [ ] After finishing, show success message.
 - [ ] Tag this version (v1.0.0)
-<br><br><br><br><br><br><br><br><br><br>
+
 #### Version 2
 - [ ] Instead of asking user if he want to encrypt of decrypt the file, think of another way that will allow you to know if the file is already encrypted or not.
 - [ ] If the file is already encrypted, decrypt it.
